@@ -3,9 +3,9 @@ return [
     'components' => [
         'db' => [
             'class' => 'yii\db\Connection',
-            'dsn' => 'mysql:host=localhost;dbname=yii2advanced',
+            'dsn' => 'mysql:host=localhost;dbname=shop',
             'username' => 'root',
-            'password' => '',
+            'password' => '19970805ak',
             'charset' => 'utf8',
         ],
         'mailer' => [
@@ -15,6 +15,9 @@ return [
             // 'useFileTransport' to false and configure a transport
             // for the mailer to send real emails.
             'useFileTransport' => true,
+            'messageConfig' => [
+                'from' => ['support@example.com' => 'Shop']
+            ],
         ],
     ],
 ];
