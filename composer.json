@@ -25,7 +25,21 @@
         "filsh/yii2-oauth2-server": "*",
         "yii-dream-team/yii2-upload-behavior": "*",
         "yiisoft/yii2-jui": "^2.0",
-        "codemix/yii2-localeurls": "^1.7"
+        "codemix/yii2-localeurls": "^1.7",
+        "kartik-v/yii2-field-range": "*",
+        "bower-asset/font-awesome": "^4.7",
+        "bower-asset/owl.carousel": "^2.2",
+        "bower-asset/magnific-popup": "^1.1",
+        "elasticsearch/elasticsearch": "^7.0",
+        "mihaildev/yii2-ckeditor": "*",
+        "mihaildev/yii2-elfinder": "*",
+        "fishvision/yii2-migrate": "*",
+        "guzzlehttp/guzzle": "^6.3",
+        "flow/jsonpath": "^0.4.0",
+        "yiisoft/yii2-redis": "~2.0.0",
+        "yiisoft/yii2-queue": "^2.3",
+        "league/flysystem": "^1.0",
+        "phpoffice/phpspreadsheet": "^1.8"
     },
     "require-dev": {
         "yiisoft/yii2-debug": "~2.1.0",
