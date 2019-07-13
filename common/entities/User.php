@@ -1,5 +1,5 @@
 <?php
-namespace common\models;
+namespace common\entities;
 
 use Yii;
 use yii\base\NotSupportedException;
@@ -43,7 +43,7 @@ class User extends ActiveRecord implements IdentityInterface
     public function behaviors()
     {
         return [
-            TimestampBehavior::className(),
+            TimestampBehavior::class,
         ];
     }
 
