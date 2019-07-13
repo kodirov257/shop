@@ -11,12 +11,6 @@ use yii\base\InvalidArgumentException;
 
 class PasswordResetService
 {
-    private $supportEmail;
-
-    public function __construct($supportEmail)
-    {
-        $this->supportEmail = $supportEmail;
-    }
 
     public function request($form): void
     {
@@ -42,7 +36,6 @@ class PasswordResetService
                 ['html' => 'passwordResetToken-html', 'text' => 'passwordResetToken-text'],
                 ['user' => $user]
             )
-            ->setFrom($this->supportEmail)
             ->setTo($form->email)
             ->setSubject('Password reset for ' . Yii::$app->name)
             ->send();
