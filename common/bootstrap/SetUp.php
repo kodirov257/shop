@@ -4,10 +4,10 @@
 namespace common\bootstrap;
 
 
-use shop\services\auth\PasswordResetService;
 use shop\services\contact\ContactService;
 use Yii;
 use yii\base\BootstrapInterface;
+use yii\mail\MailerInterface;
 
 class SetUp implements BootstrapInterface
 {
@@ -15,7 +15,9 @@ class SetUp implements BootstrapInterface
     {
         $container = \Yii::$container;
 
-        $container->setSingleton(PasswordResetService::class);
+        $container->setSingleton(MailerInterface::class, function () use ($app) {
+            return $app->mailer;
+        });
 
         $container->setSingleton(ContactService::class, [], [
             $app->params['adminEmail']
