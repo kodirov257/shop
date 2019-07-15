@@ -14,8 +14,8 @@ use yii\web\IdentityInterface;
  * @property string $username
  * @property string $password_hash
  * @property string $password_reset_token
- * @property string $verification_token
  * @property string $email
+ * @property string $email_confirm_token
  * @property string $auth_key
  * @property integer $status
  * @property integer $created_at
@@ -25,19 +25,29 @@ use yii\web\IdentityInterface;
 class User extends ActiveRecord implements IdentityInterface
 {
     const STATUS_DELETED = 0;
-    const STATUS_INACTIVE = 9;
+    const STATUS_INACTIVE = 5;
     const STATUS_ACTIVE = 10;
 
-    public static function signup(string $username, string $email, string $password): self
+    public static function requestSignup(string $username, string $email, string $password): self
     {
         $user = new User();
         $user->username = $username;
         $user->email = $email;
         $user->setPassword($password);
         $user->created_at = time();
-        $user->status = self::STATUS_ACTIVE;
+        $user->status = self::STATUS_INACTIVE;
+        $user->generateEmailConfirmToken();
         $user->generateAuthKey();
         return $user;
+    }
+
+    public function confirmSignup(): void
+    {
+        if (!$this->isWait()) {
+            throw new \DomainException('User is already active.');
+        }
+        $this->status = self::STATUS_ACTIVE;
+        $this->removeEmailConfirmToken();
     }
 
     public function requestPasswordReset(): void
@@ -60,6 +70,11 @@ class User extends ActiveRecord implements IdentityInterface
     public function isActive(): bool
     {
         return $this->status === self::STATUS_ACTIVE;
+    }
+
+    public function isWait(): bool
+    {
+        return $this->status === self::STATUS_INACTIVE;
     }
 
     public static function findIdentity($id)
@@ -98,19 +113,6 @@ class User extends ActiveRecord implements IdentityInterface
         return static::findOne([
             'password_reset_token' => $token,
             'status' => self::STATUS_ACTIVE,
-        ]);
-    }
-
-    /**
-     * Finds user by verification email token
-     *
-     * @param string $token verify email token
-     * @return static|null
-     */
-    public static function findByVerificationToken($token) {
-        return static::findOne([
-            'verification_token' => $token,
-            'status' => self::STATUS_INACTIVE
         ]);
     }
 
@@ -193,9 +195,19 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
     }
 
-    private function generateEmailVerificationToken()
+    /**
+     * Generates new password reset token
+     */
+    private function generateEmailConfirmToken()
     {
-        $this->verification_token = Yii::$app->security->generateRandomString() . '_' . time();
+        $this->email_confirm_token = Yii::$app->security->generateRandomString();
+    }
+    /**
+     * Removes email confirm token
+     */
+    private function removeEmailConfirmToken()
+    {
+        $this->email_confirm_token = null;
     }
 
     public function rules()

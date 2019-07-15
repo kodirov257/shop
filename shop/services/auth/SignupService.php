@@ -7,16 +7,20 @@ namespace shop\services\auth;
 use common\entities\User;
 use frontend\forms\SignupForm;
 use Yii;
+use yii\mail\MailerInterface;
 
 class SignupService
 {
-    public function signup(SignupForm $form)
-    {
-        if (!$this->validate()) {
-            return null;
-        }
+    private $mailer;
 
-        $user = User::signup($form->username, $form->email, $form->password);
+    public function __construct(MailerInterface $mailer)
+    {
+        $this->mailer = $mailer;
+    }
+
+    public function signup(SignupForm $form): void
+    {
+        $user = User::requestSignup($form->username, $form->email, $form->password);
 
         if (!$user->save()) {
             throw new \RuntimeException('Saving error.');
@@ -24,22 +28,33 @@ class SignupService
 
 //        $this->sendEmail($user);
 
-        return $user;
-
-    }
-
-    protected function sendEmail($user)
-    {
-        return Yii::$app
-            ->mailer
+        $sent = $this->mailer
             ->compose(
-                ['html' => 'emailVerify-html', 'text' => 'emailVerify-text'],
+                ['html' => 'emailConfirmToken-html', 'text' => 'emailConfirmToken-text'],
                 ['user' => $user]
             )
-            ->setFrom([Yii::$app->params['supportEmail'] => Yii::$app->name . ' robot'])
-            ->setTo($this->email)
-            ->setSubject('Account registration at ' . Yii::$app->name)
+            ->setTo($form->email)
+            ->setSubject('Signup confirm for ' . \Yii::$app->name)
             ->send();
+
+        if (!$sent) {
+            throw new \RuntimeException('Email sending error.');
+        }
     }
 
+    public function confirm($token): void
+    {
+        if (empty($token)) {
+            throw new \DomainException('Empty confirm token.');
+        }
+        /* @var $user User */
+        $user = User::findOne(['email_confirm_token' => $token]);
+        if (!$user) {
+            throw new \DomainException('User is not found.');
+        }
+        $user->confirmSignup();
+        if (!$user->save()) {
+            throw new \RuntimeException('Saving error.');
+        }
+    }
 }
