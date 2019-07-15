@@ -1,9 +1,9 @@
 <?php
 
-namespace common\tests\unit\forms;
+namespace shop\tests\unit\forms;
 
 use Yii;
-use common\forms\LoginForm;
+use shop\forms\LoginForm;
 use common\fixtures\UserFixture;
 
 /**

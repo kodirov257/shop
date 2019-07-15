@@ -1,9 +1,9 @@
 <?php
-namespace frontend\forms;
+namespace shop\forms;
 
 use yii\base\InvalidArgumentException;
 use yii\base\Model;
-use common\entities\User;
+use shop\entities\User;
 
 class ResetPasswordForm extends Model
 {

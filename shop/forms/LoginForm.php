@@ -1,5 +1,5 @@
 <?php
-namespace common\forms;
+namespace shop\forms;
 
 use yii\base\Model;
 

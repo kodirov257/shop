@@ -4,7 +4,7 @@
 namespace shop\services\auth;
 
 
-use frontend\forms\ResetPasswordForm;
+use shop\forms\ResetPasswordForm;
 use shop\repositories\UserRepository;
 use Yii;
 use yii\base\InvalidArgumentException;

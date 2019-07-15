@@ -4,7 +4,7 @@
 namespace shop\services\contact;
 
 
-use frontend\forms\ContactForm;
+use shop\forms\ContactForm;
 use Yii;
 use yii\mail\MailerInterface;
 

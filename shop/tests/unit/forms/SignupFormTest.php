@@ -1,9 +1,9 @@
 <?php
-namespace frontend\tests\unit\forms;
+namespace shop\tests\unit\forms;
 
-use common\entities\User;
+use shop\entities\User;
 use common\fixtures\UserFixture;
-use frontend\forms\SignupForm;
+use shop\forms\SignupForm;
 
 class SignupFormTest extends \Codeception\Test\Unit
 {

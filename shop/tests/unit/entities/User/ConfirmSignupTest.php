@@ -1,11 +1,11 @@
 <?php
 
 
-namespace common\tests\unit\entities\User;
+namespace shop\forms\unit\entities\User;
 
 
 use Codeception\Test\Unit;
-use common\entities\User;
+use shop\entities\User;
 
 class ConfirmSignupTest extends Unit
 {

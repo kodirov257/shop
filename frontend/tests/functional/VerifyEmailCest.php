@@ -59,10 +59,10 @@ class VerifyEmailCest
         $I->canSee('Congratulations!', 'h1');
         $I->see('Logout (test.test)', 'form button[type=submit]');
 
-        $I->seeRecord('common\entities\User', [
+        $I->seeRecord('shop\entities\User', [
            'username' => 'test.test',
            'email' => 'test@mail.com',
-           'status' => \common\entities\User::STATUS_ACTIVE
+           'status' => \shop\entities\User::STATUS_ACTIVE
         ]);
     }
 }

@@ -4,8 +4,8 @@
 namespace shop\services\auth;
 
 
-use common\entities\User;
-use common\forms\LoginForm;
+use shop\entities\User;
+use shop\forms\LoginForm;
 use shop\repositories\UserRepository;
 
 class AuthService
