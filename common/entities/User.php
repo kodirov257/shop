@@ -21,6 +21,7 @@ use yii\web\IdentityInterface;
  * @property integer $created_at
  * @property integer $updated_at
  * @property string $password write-only password
+ * @property string $verification_token [varchar(255)]
  */
 class User extends ActiveRecord implements IdentityInterface
 {
@@ -36,7 +37,7 @@ class User extends ActiveRecord implements IdentityInterface
         $user->setPassword($password);
         $user->created_at = time();
         $user->status = self::STATUS_INACTIVE;
-        $user->generateEmailConfirmToken();
+        $user->email_confirm_token = Yii::$app->security->generateRandomString();
         $user->generateAuthKey();
         return $user;
     }
@@ -47,7 +48,7 @@ class User extends ActiveRecord implements IdentityInterface
             throw new \DomainException('User is already active.');
         }
         $this->status = self::STATUS_ACTIVE;
-        $this->removeEmailConfirmToken();
+        $this->email_confirm_token = null;
     }
 
     public function requestPasswordReset(): void
@@ -185,29 +186,6 @@ class User extends ActiveRecord implements IdentityInterface
     private function generateAuthKey()
     {
         $this->auth_key = Yii::$app->security->generateRandomString();
-    }
-
-    /**
-     * Generates new password reset token
-     */
-    private function generatePasswordResetToken()
-    {
-        $this->password_reset_token = Yii::$app->security->generateRandomString() . '_' . time();
-    }
-
-    /**
-     * Generates new password reset token
-     */
-    private function generateEmailConfirmToken()
-    {
-        $this->email_confirm_token = Yii::$app->security->generateRandomString();
-    }
-    /**
-     * Removes email confirm token
-     */
-    private function removeEmailConfirmToken()
-    {
-        $this->email_confirm_token = null;
     }
 
     public function rules()
