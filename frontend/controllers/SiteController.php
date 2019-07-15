@@ -3,6 +3,7 @@ namespace frontend\controllers;
 
 use frontend\forms\ResendVerificationEmailForm;
 use frontend\forms\VerifyEmailForm;
+use shop\services\auth\AuthService;
 use shop\services\auth\PasswordResetService;
 use shop\services\contact\ContactService;
 use shop\services\auth\SignupService;
@@ -23,16 +24,19 @@ use frontend\forms\ContactForm;
  */
 class SiteController extends Controller
 {
+    private $authService;
     private $signupService;
     private $passwordResetService;
     private $contactService;
 
     public function __construct($id, $module,
+                                AuthService $authService,
                                 SignupService $signupService,
                                 PasswordResetService $passwordResetService,
                                 ContactService $contactService,
                                 $config = [])
     {
+        $this->authService = $authService;
         $this->signupService = $signupService;
         $this->passwordResetService = $passwordResetService;
         $this->contactService = $contactService;
@@ -107,15 +111,21 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $model = new LoginForm();
-        if ($model->load(Yii::$app->request->post()) && $model->login()) {
-            return $this->goBack();
+        $form = new LoginForm();
+        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+            try {
+                $user = $this->authService->auth($form);
+                Yii::$app->user->login($user, $form->rememberMe ? 3600 * 24 * 30 : 0);
+                return $this->goBack();
+            } catch (\DomainException $e) {
+                Yii::$app->session->setFlash('error', $e->getMessage());
+            }
         }
 
-        $model->password = '';
+        $form->password = '';
 
         return $this->render('login', [
-            'model' => $model,
+            'model' => $form,
         ]);
     }
 

@@ -19,6 +19,6 @@ return [
         'status' => '9',
         'created_at' => '1548675330',
         'updated_at' => '1548675330',
-        'verification_token' => '4ch0qbfhvWwkcuWqjN8SWRq72SOw1KYT_1548675330',
+        'email_confirm_token' => '4ch0qbfhvWwkcuWqjN8SWRq72SOw1KYT_1548675330',
     ],
 ];

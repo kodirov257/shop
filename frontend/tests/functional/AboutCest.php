@@ -7,7 +7,7 @@ class AboutCest
 {
     public function checkAbout(FunctionalTester $I)
     {
-        $I->amOnRoute('site/about');
+        $I->amOnRoute('about');
         $I->see('About', 'h1');
     }
 }
