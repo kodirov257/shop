@@ -20,6 +20,7 @@ use yii\web\IdentityInterface;
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
+ * @property string $authKey
  * @property string $password write-only password
  */
 class User extends ActiveRecord implements IdentityInterface
@@ -30,14 +31,14 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function requestSignup(string $username, string $email, string $password): self
     {
-        $user = new User();
+        $user = new static();
         $user->username = $username;
         $user->email = $email;
         $user->setPassword($password);
         $user->created_at = time();
         $user->status = self::STATUS_INACTIVE;
         $user->email_confirm_token = Yii::$app->security->generateRandomString();
-        $user->generateAuthKey();
+        $user->auth_key = Yii::$app->security->generateRandomString();
         return $user;
     }
 
@@ -179,14 +180,6 @@ class User extends ActiveRecord implements IdentityInterface
         $this->password_hash = Yii::$app->security->generatePasswordHash($password);
     }
 
-    /**
-     * Generates "remember me" authentication key
-     */
-    private function generateAuthKey()
-    {
-        $this->auth_key = Yii::$app->security->generateRandomString();
-    }
-
     public function rules()
     {
         return [
@@ -197,7 +190,7 @@ class User extends ActiveRecord implements IdentityInterface
 
     public static function tableName()
     {
-        return '{{%user}}';
+        return '{{%users}}';
     }
 
     public function behaviors()
