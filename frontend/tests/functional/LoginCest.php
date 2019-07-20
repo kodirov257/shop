@@ -26,7 +26,7 @@ class LoginCest
 
     public function _before(FunctionalTester $I)
     {
-        $I->amOnRoute('site/login');
+        $I->amOnRoute('auth/auth/login');
     }
 
     protected function formParams($login, $password)

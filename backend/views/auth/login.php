@@ -3,11 +3,10 @@
 use common\widgets\Alert;
 use yii\helpers\Html;
 use yii\bootstrap\ActiveForm;
-use yii\web\View;
 
 /* @var $this yii\web\View */
 /* @var $form yii\bootstrap\ActiveForm */
-/* @var $model \common\models\LoginForm */
+/* @var $model \shop\forms\LoginForm */
 
 $this->title = 'Sign In';
 
