@@ -2,7 +2,7 @@
 
 namespace frontend\tests\functional;
 
-use shop\entities\User;
+use shop\entities\User\User;
 use frontend\tests\FunctionalTester;
 
 class SignupCest
@@ -48,7 +48,7 @@ class SignupCest
             'SignupForm[password]' => 'tester_password',
         ]);
 
-        $I->seeRecord('shop\entities\User', [
+        $I->seeRecord('shop\entities\User\User', [
             'username' => 'tester',
             'email' => 'tester.email@example.com',
             'status' => User::STATUS_INACTIVE

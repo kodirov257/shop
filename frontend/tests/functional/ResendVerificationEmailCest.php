@@ -73,10 +73,10 @@ class ResendVerificationEmailCest
     {
         $I->submitForm($this->formId, $this->formParams('test@mail.com'));
         $I->canSeeEmailIsSent();
-        $I->seeRecord('shop\entities\User', [
+        $I->seeRecord('shop\entities\User\User', [
             'email' => 'test@mail.com',
             'username' => 'test.test',
-            'status' => \shop\entities\User::STATUS_INACTIVE
+            'status' => \shop\entities\User\User::STATUS_INACTIVE
         ]);
         $I->see('Check your email for further instructions.');
     }

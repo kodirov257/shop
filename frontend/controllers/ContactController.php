@@ -19,7 +19,7 @@ class ContactController extends Controller
         $this->service = $service;
     }
 
-    public function actionContact()
+    public function actionIndex()
     {
         $form = new ContactForm();
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {

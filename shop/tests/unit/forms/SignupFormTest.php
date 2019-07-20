@@ -1,7 +1,7 @@
 <?php
 namespace shop\tests\unit\forms;
 
-use shop\entities\User;
+use shop\entities\User\User;
 use common\fixtures\UserFixture;
 use shop\forms\SignupForm;
 
