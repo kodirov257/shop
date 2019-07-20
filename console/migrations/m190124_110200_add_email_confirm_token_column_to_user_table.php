@@ -6,11 +6,11 @@ class m190124_110200_add_email_confirm_token_column_to_user_table extends Migrat
 {
     public function up()
     {
-        $this->addColumn('{{%user}}', 'email_confirm_token', $this->string()->defaultValue(null)->after('email'));
+        $this->addColumn('{{%users}}', 'email_confirm_token', $this->string()->defaultValue(null)->after('email'));
     }
 
     public function down()
     {
-        $this->dropColumn('{{%user}}', 'email_confirm_token');
+        $this->dropColumn('{{%users}}', 'email_confirm_token');
     }
 }
