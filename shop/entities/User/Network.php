@@ -24,11 +24,11 @@ class Network extends ActiveRecord
         Assert::notEmpty($network);
         Assert::notEmpty($identity);
 
-        $network = new static();
-        $network->network = $network;
-        $network->identity = $identity;
+        $item = new static();
+        $item->network = $network;
+        $item->identity = $identity;
 
-        return $network;
+        return $item;
     }
 
     public function rules()
