@@ -5,9 +5,6 @@ use Yii;
 use yii\base\Model;
 use shop\entities\User\User;
 
-/**
- * Signup form
- */
 class SignupForm extends Model
 {
     public $username;
@@ -15,9 +12,6 @@ class SignupForm extends Model
     public $password;
 
 
-    /**
-     * {@inheritdoc}
-     */
     public function rules()
     {
         return [

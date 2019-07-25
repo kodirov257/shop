@@ -7,18 +7,18 @@ $config = [
             'clients' => [
                 'vk' => [
                     'class' => 'yii\authclient\clients\VKontakte',
-                    'clientId' => '',
-                    'clientSecret' => '',
+                    'clientId' => '',       // TODO: add clientId
+                    'clientSecret' => '',   // TODO: add clientSecret
                 ],
                 'google' => [
                     'class' => 'yii\authclient\clients\Google',
-                    'clientId' => '',
-                    'clientSecret' => '',
+                    'clientId' => '',       // TODO: add clientId
+                    'clientSecret' => '',   // TODO: add clientSecret
                 ],
                 'facebook' => [
                     'class' => 'yii\authclient\clients\Facebook',
-                    'clientId' => '',
-                    'clientSecret' => '',
+                    'clientId' => '',       // TODO: add clientId
+                    'clientSecret' => '',   // TODO: add clientSecret
                 ],
             ],
         ],
