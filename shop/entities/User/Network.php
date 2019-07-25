@@ -57,6 +57,11 @@ class Network extends ActiveRecord
         return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 
+    public function isFor($network, $identity)
+    {
+        return $this->network === $this->network && $this->identity === $identity;
+    }
+
     public static function tableName()
     {
         return '{{%user_networks}}';
