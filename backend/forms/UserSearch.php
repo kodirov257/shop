@@ -30,7 +30,7 @@ class UserSearch extends Model
      * @param array $params
      * @return ActiveDataProvider
      */
-    public function search($params)
+    public function search(array $params): ActiveDataProvider
     {
         $query = User::find()->alias('u');
 
