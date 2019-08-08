@@ -1,7 +1,7 @@
 <?php
 
 
-namespace shop\services\contact;
+namespace shop\services\manage;
 
 
 use shop\forms\ContactForm;

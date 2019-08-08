@@ -3,7 +3,7 @@ namespace frontend\controllers;
 
 use shop\services\auth\AuthService;
 use shop\services\auth\PasswordResetService;
-use shop\services\contact\ContactService;
+use shop\services\manage\ContactService;
 use shop\services\auth\SignupService;
 use Yii;
 use yii\web\BadRequestHttpException;
