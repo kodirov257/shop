@@ -27,6 +27,7 @@
         "yiisoft/yii2-jui": "^2.0",
         "codemix/yii2-localeurls": "^1.7",
         "kartik-v/yii2-field-range": "*",
+        "paulzi/yii2-nested-sets": "^1.0",
         "bower-asset/font-awesome": "^4.7",
         "bower-asset/owl.carousel": "^2.2",
         "bower-asset/magnific-popup": "^1.1",
