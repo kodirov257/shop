@@ -4,6 +4,7 @@
 namespace shop\repositories;
 
 
+use http\Exception\RuntimeException;
 use shop\entities\User\User;
 
 class UserRepository
@@ -47,6 +48,13 @@ class UserRepository
     {
         if (!$user->save()) {
             throw new \RuntimeException('Saving error.');
+        }
+    }
+
+    public function remove(User $user): void
+    {
+        if (!$user->delete()) {
+            throw new \RuntimeException('Removing error.');
         }
     }
 
