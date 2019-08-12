@@ -4,7 +4,7 @@
 namespace frontend\controllers\auth;
 
 
-use shop\forms\SignupForm;
+use shop\forms\auth\SignupForm;
 use shop\services\auth\SignupService;
 use Yii;
 use yii\filters\AccessControl;

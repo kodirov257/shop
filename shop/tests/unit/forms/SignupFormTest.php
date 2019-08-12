@@ -3,7 +3,7 @@ namespace shop\tests\unit\forms;
 
 use shop\entities\User\User;
 use common\fixtures\UserFixture;
-use shop\forms\SignupForm;
+use shop\forms\auth\SignupForm;
 
 class SignupFormTest extends \Codeception\Test\Unit
 {
