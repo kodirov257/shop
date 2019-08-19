@@ -41,7 +41,7 @@ class ValueForm extends Model
         ];
     }
 
-    public function getId():int
+    public function getId(): int
     {
         return $this->_characteristic->id;
     }
