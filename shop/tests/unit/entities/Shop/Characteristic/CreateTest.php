@@ -26,7 +26,7 @@ class CreateTest extends Unit
         $this->assertEquals($default, $characteristic->default);
         $this->assertEquals($variants, $characteristic->variants);
         $this->assertEquals($sort, $characteristic->sort);
-        $this->assertTrue($characteristic->isSelected());
+        $this->assertTrue($characteristic->isSelect());
     }
 
 }
