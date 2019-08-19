@@ -5,6 +5,7 @@ namespace shop\forms\manage\Shop\Product;
 
 
 use shop\entities\Shop\Characteristic;
+use shop\entities\Shop\Product\Product;
 use shop\forms\CompositeForm;
 use shop\forms\manage\MetaForm;
 
