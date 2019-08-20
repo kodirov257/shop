@@ -65,7 +65,7 @@ class Characteristic extends ActiveRecord
         return $this->type === self::TYPE_FLOAT;
     }
 
-    public static function tableName()
+    public static function tableName(): string
     {
         return '{{%shop_characteristics}}';
     }

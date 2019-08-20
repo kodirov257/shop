@@ -24,7 +24,7 @@ class TagAssignment extends ActiveRecord
         return $this->tag_id == $id;
     }
 
-    public static function tableName()
+    public static function tableName(): string
     {
         return '{{%shop_tag_assignments}}';
     }

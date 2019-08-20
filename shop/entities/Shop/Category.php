@@ -48,7 +48,7 @@ class Category extends ActiveRecord
         $this->meta = $meta;
     }
 
-    public static function tableName()
+    public static function tableName(): string
     {
         return '{{%shop_categories}}';
     }

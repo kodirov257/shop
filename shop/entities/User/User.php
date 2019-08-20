@@ -246,7 +246,7 @@ class User extends ActiveRecord implements IdentityInterface
         $this->auth_key = Yii::$app->security->generateRandomString();
     }
 
-    public static function tableName()
+    public static function tableName(): string
     {
         return '{{%users}}';
     }
