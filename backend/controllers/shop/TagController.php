@@ -2,20 +2,20 @@
 
 namespace backend\controllers\shop;
 
-use shop\forms\manage\Shop\BrandForm;
-use shop\services\manage\Shop\BrandManageService;
+use shop\forms\manage\Shop\TagForm;
+use shop\services\manage\Shop\TagManageService;
 use Yii;
-use shop\entities\Shop\Brand;
-use backend\forms\Shop\BrandSearch;
+use shop\entities\Shop\Tag;
+use backend\forms\Shop\TagSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
-class BrandController extends Controller
+class TagController extends Controller
 {
     private $service;
 
-    public function __construct($id, $module, BrandManageService $service, $config = [])
+    public function __construct($id, $module, TagManageService $service, $config = [])
     {
         parent::__construct($id, $module, $config);
         $this->service = $service;
@@ -34,12 +34,12 @@ class BrandController extends Controller
     }
 
     /**
-     * Lists all Brand models.
+     * Lists all Tag models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new BrandSearch();
+        $searchModel = new TagSearch();
         $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
@@ -49,7 +49,7 @@ class BrandController extends Controller
     }
 
     /**
-     * Displays a single Brand model.
+     * Displays a single Tag model.
      * @param integer $id
      * @return mixed
      * @throws NotFoundHttpException if the model cannot be found
@@ -57,22 +57,22 @@ class BrandController extends Controller
     public function actionView($id)
     {
         return $this->render('view', [
-            'brand' => $this->findModel($id),
+            'tag' => $this->findModel($id),
         ]);
     }
 
     /**
-     * Creates a new Brand model.
+     * Creates a new Tag model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $form = new BrandForm();
+        $form = new TagForm();
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
-                $brand = $this->service->create($form);
-                return $this->redirect(['view', 'id' => $brand->id]);
+                $tag = $this->service->create($form);
+                return $this->redirect(['view', 'id' => $tag->id]);
             } catch (\DomainException $e) {
                 Yii::$app->errorHandler->logException($e);
                 Yii::$app->session->setFlash('error', $e->getMessage());
@@ -84,7 +84,7 @@ class BrandController extends Controller
     }
 
     /**
-     * Updates an existing Brand model.
+     * Updates an existing Tag model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -92,12 +92,12 @@ class BrandController extends Controller
      */
     public function actionUpdate($id)
     {
-        $brand = $this->findModel($id);
-        $form = new BrandForm($brand);
+        $tag = $this->findModel($id);
+        $form = new TagForm($tag);
         if ($form->load(Yii::$app->request->post()) && $form->validate()) {
             try {
-                $this->service->edit($brand->id, $form);
-                return $this->redirect(['view', 'id' => $brand->id]);
+                $this->service->edit($tag->id, $form);
+                return $this->redirect(['view', 'id' => $tag->id]);
             } catch (\DomainException $e) {
                 Yii::$app->errorHandler->logException($e);
                 Yii::$app->session->setFlash('error', $e->getMessage());
@@ -105,12 +105,12 @@ class BrandController extends Controller
         }
         return $this->render('update', [
             'model' => $form,
-            'brand' => $brand,
+            'Tag' => $tag,
         ]);
     }
 
     /**
-     * Deletes an existing Brand model.
+     * Deletes an existing Tag model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -127,15 +127,15 @@ class BrandController extends Controller
     }
 
     /**
-     * Finds the Brand model based on its primary key value.
+     * Finds the Tag model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Brand the loaded model
+     * @return Tag the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Brand::findOne($id)) !== null) {
+        if (($model = Tag::findOne($id)) !== null) {
             return $model;
         }
 

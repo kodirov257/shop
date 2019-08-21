@@ -45,6 +45,7 @@ return [
     'Not specified' => 'Aniqlanmagan',
 
     'Brands' => 'Brend',
+    'Tags' => 'Teglar',
     ///////////////////////////////////////////
 
 

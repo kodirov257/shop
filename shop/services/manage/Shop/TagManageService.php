@@ -8,7 +8,7 @@ use shop\entities\Shop\Tag;
 use shop\forms\manage\Shop\TagForm;
 use shop\repositories\Shop\TagRepository;
 
-class TagManageRepository
+class TagManageService
 {
     private $tags;
 
