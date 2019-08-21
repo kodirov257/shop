@@ -43,6 +43,8 @@ return [
     'Male' => 'Erkak',
     'Female' => 'Ayol',
     'Not specified' => 'Aniqlanmagan',
+
+    'Brands' => 'Brend',
     ///////////////////////////////////////////
 
 
