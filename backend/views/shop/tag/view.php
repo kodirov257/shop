@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Tags'), 'url' => ['i
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
 ?>
-<div class="brand-view">
+<div class="category-view">
 
     <p>
         <?= Html::a(Yii::t('app', 'Update'), ['update', 'id' => $tag->id], ['class' => 'btn btn-primary']) ?>

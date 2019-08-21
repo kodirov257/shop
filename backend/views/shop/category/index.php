@@ -1,15 +1,16 @@
 <?php
 
-use shop\entities\Shop\Tag;
+use shop\entities\Shop\Category;
 use yii\grid\ActionColumn;
 use yii\helpers\Html;
 use yii\grid\GridView;
 use yii\widgets\Pjax;
+
 /* @var $this yii\web\View */
-/* @var $searchModel backend\forms\Shop\TagSearch */
+/* @var $searchModel backend\forms\Shop\CategorySearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
-$this->title = Yii::t('app', 'Tags');
+$this->title = Yii::t('app', 'Categories');
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="category-index">
@@ -29,12 +30,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     'id',
                     [
                         'attribute' => 'name',
-                        'value' => function (Tag $model) {
-                            return Html::a(Html::encode($model->name), ['view', 'id' => $model->id]);
+                        'value' => function (Category $model) {
+                            $indent = ($model->depth > 1 ? str_repeat('&nbsp;&nbsp;', $model->depth - 1) . ' ' : '');
+                            return $indent . Html::a(Html::encode($model->name), ['view', 'id' => $model->id]);
                         },
                         'format' => 'raw',
                     ],
                     'slug',
+                    'title',
                     ['class' => ActionColumn::class],
                 ],
             ]); ?>
