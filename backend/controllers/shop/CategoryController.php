@@ -127,6 +127,26 @@ class CategoryController extends Controller
     }
 
     /**
+     * @param $id
+     * @return mixed
+     */
+    public function actionMoveUp($id)
+    {
+        $this->service->moveUp($id);
+        return $this->redirect(['index']);
+    }
+
+    /**
+     * @param $id
+     * @return mixed
+     */
+    public function actionMoveDown($id)
+    {
+        $this->service->moveDown($id);
+        return $this->redirect(['index']);
+    }
+
+    /**
      * Finds the Category model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id

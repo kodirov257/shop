@@ -22,6 +22,8 @@ use yii\db\ActiveRecord;
  *
  * @property Category $parent
  * @property string $meta_json [json]
+ * @property Category $prev
+ * @property Category $next
  * @mixin NestedSetsBehavior
  */
 class Category extends ActiveRecord
