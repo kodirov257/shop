@@ -24,49 +24,53 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php Pjax::begin(); ?>
     <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
-    <?= GridView::widget([
-        'dataProvider' => $dataProvider,
-        'filterModel' => $searchModel,
-        'columns' => [
-            ['class' => 'yii\grid\SerialColumn'],
+    <div class="box">
+        <div class="box-body">
+            <?= GridView::widget([
+                'dataProvider' => $dataProvider,
+                'filterModel' => $searchModel,
+                'columns' => [
+                    ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
-            [
-                'attribute' => 'created_at',
-                'filter' => DatePicker::widget([
-                    'model' => $searchModel,
-                    'attribute' => 'date_from',
-                    'attribute2' => 'date_to',
-                    'type' => DatePicker::TYPE_RANGE,
-                    'separator' => '-',
-                    'pluginOptions' => [
-                        'todayHighlight' => true,
-                        'autoclose' => true,
-                        'format' => 'yyyy-mm-dd',
-                    ]
-                ]),
-                'format' => 'datetime',
-            ],
-            [
-                'attribute' => 'username',
-                'value' => function (User $model) {
-                    return Html::a(Html::encode($model->username), ['view', 'id' => $model->id]);
-                },
-                'format' => 'raw',
-            ],
-            'email:email',
-            [
-                'attribute' => 'status',
-                'filter' => UserHelper::statusList(),
-                'value' => function (User $model) {
-                    return UserHelper::statusLabel($model->status);
-                },
-                'format' => 'raw',
-            ],
+                    'id',
+                    [
+                        'attribute' => 'created_at',
+                        'filter' => DatePicker::widget([
+                            'model' => $searchModel,
+                            'attribute' => 'date_from',
+                            'attribute2' => 'date_to',
+                            'type' => DatePicker::TYPE_RANGE,
+                            'separator' => '-',
+                            'pluginOptions' => [
+                                'todayHighlight' => true,
+                                'autoclose' => true,
+                                'format' => 'yyyy-mm-dd',
+                            ]
+                        ]),
+                        'format' => 'datetime',
+                    ],
+                    [
+                        'attribute' => 'username',
+                        'value' => function (User $model) {
+                            return Html::a(Html::encode($model->username), ['view', 'id' => $model->id]);
+                        },
+                        'format' => 'raw',
+                    ],
+                    'email:email',
+                    [
+                        'attribute' => 'status',
+                        'filter' => UserHelper::statusList(),
+                        'value' => function (User $model) {
+                            return UserHelper::statusLabel($model->status);
+                        },
+                        'format' => 'raw',
+                    ],
 
-            ['class' => ActionColumn::class],
-        ],
-    ]); ?>
+                    ['class' => ActionColumn::class],
+                ],
+            ]); ?>
+        </div>
+    </div>
 
     <?php Pjax::end(); ?>
 
