@@ -15,6 +15,10 @@ return [
         'log',
         'common\bootstrap\SetUp',
     ],
+    'aliases' => [
+        '@staticRoot' => $params['staticPath'],
+        '@static'   => $params['staticHostInfo'],
+    ],
     'modules' => [],
     'components' => [
         'request' => [
