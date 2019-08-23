@@ -7,7 +7,6 @@ namespace shop\services\manage\Shop;
 use shop\entities\Meta;
 use shop\entities\Shop\Product\Product;
 use shop\entities\Shop\Tag;
-use shop\forms\manage\Shop\Product\CategoriesForm;
 use shop\forms\manage\Shop\Product\ModificationForm;
 use shop\forms\manage\Shop\Product\PhotosForm;
 use shop\forms\manage\Shop\Product\PriceForm;
@@ -17,7 +16,7 @@ use shop\repositories\Shop\BrandRepository;
 use shop\repositories\Shop\CategoryRepository;
 use shop\repositories\Shop\ProductRepository;
 use shop\repositories\Shop\TagRepository;
-use shop\service\TransactionManager;
+use shop\services\TransactionManager;
 
 class ProductManageService
 {
