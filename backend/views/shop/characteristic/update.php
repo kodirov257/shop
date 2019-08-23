@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model shop\forms\manage\Shop\CharacteristicForm */
 
 $this->title = Yii::t('app', 'Update {name}', [
-    'name' => $model->name,
+    'name' => $characteristic->name,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Characteristics'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $characteristic->name, 'url' => ['view', 'id' => $characteristic->id]];

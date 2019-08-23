@@ -8,6 +8,10 @@ use shop\entities\Shop\Characteristic;
 use shop\entities\Shop\Product\Value;
 use yii\base\Model;
 
+/**
+ *
+ * @property int $id
+ */
 class ValueForm extends Model
 {
     public $value;
@@ -39,6 +43,11 @@ class ValueForm extends Model
         return [
             'value' => $this->_characteristic->name
         ];
+    }
+
+    public function variantsList(): array
+    {
+        return $this->_characteristic->variants ? array_combine($this->_characteristic->variants, $this->_characteristic->variants) : [];
     }
 
     public function getId(): int

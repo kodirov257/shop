@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model shop\forms\manage\Shop\BrandForm */
 
 $this->title = Yii::t('app', 'Update {name}', [
-    'name' => $model->name,
+    'name' => $brand->name,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Brands'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $brand->name, 'url' => ['view', 'id' => $brand->id]];

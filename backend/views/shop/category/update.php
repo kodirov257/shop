@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model shop\forms\manage\Shop\CategoryForm */
 
 $this->title = Yii::t('app', 'Update {name}', [
-    'name' => $model->name,
+    'name' => $category->name,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Categories'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $category->name, 'url' => ['view', 'id' => $category->id]];

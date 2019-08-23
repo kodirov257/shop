@@ -7,7 +7,7 @@ use yii\helpers\Html;
 /* @var $model shop\forms\manage\Shop\TagForm */
 
 $this->title = Yii::t('app', 'Update {name}', [
-    'name' => $model->name,
+    'name' => $tag->name,
 ]);
 $this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Tags'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = ['label' => $tag->name, 'url' => ['view', 'id' => $tag->id]];

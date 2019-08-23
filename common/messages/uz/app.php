@@ -7,6 +7,7 @@ return [
     'Delete' => 'O`chirmoq',
     'Cancel' => 'Bekor qilmoq',
     'Save' => 'Saqlamoq',
+    'Upload' => 'Yuklamoq',
     'Created' => 'Yaratildi',
     'Created at' => 'Qo`shilgan vaqt',
     'Updated at' => 'Yangilangan vaqt',
@@ -23,6 +24,8 @@ return [
     'Profile' => 'Profili',
     'Your email is confirmed.' => 'E-pochtangiz tasdiqlandi.',
     'The requested page does not exist.' => 'So`ralgan sahifa mavjud emas.',
+    'Price for Product: {name}' => '{name} mahsuloti uchun narx',
+    'Remove photo?' => 'Rasm o`chirilsinmi?',
 
     'Users' => 'Foydalanuvchilar',
     'User ID' => 'Foydalanuvchi raqami',
@@ -45,9 +48,12 @@ return [
     'Female' => 'Ayol',
     'Not specified' => 'Aniqlanmagan',
 
+    'Products' => 'Mahsulotlar',
     'Brands' => 'Brend',
     'Categories' => 'Kategoriyalar',
     'Characteristics' => 'Xarakteristikalar',
+    'Modifications' => 'O`zgarishlar',
+    'Price' => 'Narx',
     ///////////////////////////////////////////
 
 

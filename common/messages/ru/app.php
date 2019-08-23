@@ -7,6 +7,7 @@ return [
     'Delete' => 'Удалить',
     'Cancel' => 'Отменить',
     'Save' => 'Сохранить',
+    'Upload' => 'Загрузить',
     'Created' => 'Создано',
     'Created at' => 'Добавлено',
     'Updated at' => 'Обновлено',
@@ -23,6 +24,8 @@ return [
     'Profile' => 'Профиль',
     'Your email is confirmed.' => 'Ваш электронная почта подтверждена.',
     'The requested page does not exist.' => 'Запрашиваемая страница не существует.',
+    'Price for Product: {name}' => 'Цена для товара: {name}',
+    'Remove photo?' => 'Удалить фото?',
 
     'Users' => 'Пользователи',
     'User ID' => 'ИД пользователя',
@@ -45,10 +48,13 @@ return [
     'Female' => 'Женщина',
     'Not specified' => 'Не определено',
 
+    'Products' => 'Товары',
     'Brands' => 'Бренд',
     'Tags' => 'Теги',
     'Categories' => 'Категории',
     'Characteristics' => 'Характеристики',
+    'Modifications' => 'Модификации',
+    'Price' => 'Цена',
     ///////////////////////////////////////////
 
 
