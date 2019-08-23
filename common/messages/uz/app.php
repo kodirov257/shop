@@ -22,6 +22,7 @@ return [
     'Member since' => 'Registratsiyadan o`tgan sana',
     'Profile' => 'Profili',
     'Your email is confirmed.' => 'E-pochtangiz tasdiqlandi.',
+    'The requested page does not exist.' => 'So`ralgan sahifa mavjud emas.',
 
     'Users' => 'Foydalanuvchilar',
     'User ID' => 'Foydalanuvchi raqami',
@@ -46,6 +47,7 @@ return [
 
     'Brands' => 'Brend',
     'Categories' => 'Kategoriyalar',
+    'Characteristics' => 'Xarakteristikalar',
     ///////////////////////////////////////////
 
 
