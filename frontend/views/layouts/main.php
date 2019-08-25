@@ -1,8 +1,17 @@
 <?php
 
-use yii\helpers\Url;
+/* @var $this \yii\web\View */
+/* @var $content string */
 
+use common\widgets\Alert;
+use frontend\assets\AppAsset;
+use yii\helpers\Html;
+use yii\helpers\Url;
+use yii\widgets\Breadcrumbs;
+
+AppAsset::register($this);
 ?>
+<?php $this->beginPage() ?>
 <!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <!--[if IE 8 ]><html dir="ltr" lang="en" class="ie8"><![endif]-->
@@ -11,25 +20,17 @@ use yii\helpers\Url;
 <html dir="ltr" lang="en">
 <!--<![endif]-->
 <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Your Store</title>
-    <base href="/"/>
-    <meta name="description" content="My Store"/>
-    <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
-    <link href="catalog/view/javascript/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen"/>
-    <script src="catalog/view/javascript/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-    <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-    <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css"/>
-    <link href="catalog/view/theme/default/stylesheet/stylesheet.css" rel="stylesheet">
-    <link href="catalog/view/javascript/jquery/owl-carousel/owl.carousel.css" type="text/css" rel="stylesheet"
-          media="screen"/>
-    <script src="catalog/view/javascript/common.js" type="text/javascript"></script>
-    <link href="/image/catalog/cart.png" rel="icon"/>
-    <script src="catalog/view/javascript/jquery/owl-carousel/owl.carousel.min.js" type="text/javascript"></script>
+    <meta charset="<?= Yii::$app->charset ?>"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <?= Html::csrfMetaTags() ?>
+    <title><?= Html::encode($this->title) ?></title>
+    <link href="<?= Html::encode(Url::canonical()) ?>" rel="canonical"/>
+    <link href="<?= Yii::getAlias('@web/images/catalog/cart.png') ?>" rel="icon"/>
+    <?php $this->head() ?>
 </head>
 <body class="common-home">
+<?php $this->beginBody() ?>
 <nav id="top">
     <div class="container">
         <div class="pull-left">
@@ -115,7 +116,7 @@ use yii\helpers\Url;
                                 <tr>
                                     <td class="text-center"><a
                                                 href="/index.php?route=product/product&amp;product_id=30"><img
-                                                    src="http://static.shop.local/cache/products/canon_eos_5d_1-47x47.jpg"
+                                                    src="http://static.shop.dev/cache/products/canon_eos_5d_1-47x47.jpg"
                                                     alt="Canon EOS 5D" title="Canon EOS 5D" class="img-thumbnail"/></a>
                                     </td>
                                     <td class="text-left"><a
@@ -135,7 +136,7 @@ use yii\helpers\Url;
                                 <tr>
                                     <td class="text-center"><a
                                                 href="/index.php?route=product/product&amp;product_id=40"><img
-                                                    src="http://static.shop.local/cache/products/iphone_1-47x47.jpg"
+                                                    src="http://static.shop.dev/cache/products/iphone_1-47x47.jpg"
                                                     alt="iPhone" title="iPhone" class="img-thumbnail"/></a>
                                     </td>
                                     <td class="text-left"><a
@@ -301,197 +302,11 @@ use yii\helpers\Url;
     </nav>
 </div>
 <div class="container">
-    <div class="row">
-        <div id="content" class="col-sm-12">
-            <div id="slideshow0" class="owl-carousel" style="opacity: 1;">
-                <div class="item">
-                    <a href="index.php?route=product/product&amp;path=57&amp;product_id=49"><img
-                                src="http://static.shop.local/cache/banners/iPhone6-1140x380.jpg"
-                                alt="iPhone 6" class="img-responsive"/></a>
-                </div>
-                <div class="item">
-                    <img src="http://static.shop.local/cache/banners/MacBookAir-1140x380.jpg"
-                         alt="MacBookAir" class="img-responsive"/>
-                </div>
-            </div>
-            <script type="text/javascript"><!--
-                $('#slideshow0').owlCarousel({
-                    items: 6,
-                    autoPlay: 3000,
-                    singleItem: true,
-                    navigation: true,
-                    navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
-                    pagination: true
-                });
-                --></script>
-            <h3>Featured</h3>
-            <div class="row">
-                <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="product-thumb transition">
-                        <div class="image"><a
-                                    href="/index.php?route=product/product&amp;product_id=43"><img
-                                        src="http://static.shop.local/cache/products/macbook_1-200x200.jpg"
-                                        alt="MacBook" title="MacBook" class="img-responsive"/></a></div>
-                        <div class="caption">
-                            <h4><a href="/index.php?route=product/product&amp;product_id=43">MacBook</a>
-                            </h4>
-                            <p>
-                                Intel Core 2 Duo processor
-                                Powered by an Intel Core 2 Duo processor at speeds up to 2.1..</p>
-                            <p class="price">
-                                $602.00 <span class="price-tax">Ex Tax: $500.00</span>
-                            </p>
-                        </div>
-                        <div class="button-group">
-                            <button type="button" onclick="cart.add('43');"><i class="fa fa-shopping-cart"></i> <span
-                                        class="hidden-xs hidden-sm hidden-md">Add to Cart</span></button>
-                            <button type="button" data-toggle="tooltip" title="Add to Wish List"
-                                    onclick="wishlist.add('43');"><i class="fa fa-heart"></i></button>
-                            <button type="button" data-toggle="tooltip" title="Compare this Product"
-                                    onclick="compare.add('43');"><i class="fa fa-exchange"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="product-thumb transition">
-                        <div class="image"><a
-                                    href="/index.php?route=product/product&amp;product_id=40"><img
-                                        src="/image/cache/catalog/demo/iphone_1-200x200.jpg"
-                                        alt="iPhone" title="iPhone" class="img-responsive"/></a></div>
-                        <div class="caption">
-                            <h4>
-                                <a href="/index.php?route=product/product&amp;product_id=40">iPhone</a>
-                            </h4>
-                            <p>
-                                iPhone is a revolutionary new mobile phone that allows you to make a call by simply
-                                tapping a nam..</p>
-                            <p class="price">
-                                $123.20 <span class="price-tax">Ex Tax: $101.00</span>
-                            </p>
-                        </div>
-                        <div class="button-group">
-                            <button type="button" onclick="cart.add('40');"><i class="fa fa-shopping-cart"></i> <span
-                                        class="hidden-xs hidden-sm hidden-md">Add to Cart</span></button>
-                            <button type="button" data-toggle="tooltip" title="Add to Wish List"
-                                    onclick="wishlist.add('40');"><i class="fa fa-heart"></i></button>
-                            <button type="button" data-toggle="tooltip" title="Compare this Product"
-                                    onclick="compare.add('40');"><i class="fa fa-exchange"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="product-thumb transition">
-                        <div class="image"><a
-                                    href="/index.php?route=product/product&amp;product_id=42"><img
-                                        src="http://static.shop.local/cache/products/apple_cinema_30-200x200.jpg"
-                                        alt="Apple Cinema 30&quot;" title="Apple Cinema 30&quot;"
-                                        class="img-responsive"/></a></div>
-                        <div class="caption">
-                            <h4><a href="/index.php?route=product/product&amp;product_id=42">Apple
-                                    Cinema 30&quot;</a></h4>
-                            <p>
-                                The 30-inch Apple Cinema HD Display delivers an amazing 2560 x 1600 pixel resolution.
-                                Designed sp..</p>
-                            <p class="price">
-                                <span class="price-new">$110.00</span> <span class="price-old">$122.00</span>
-                                <span class="price-tax">Ex Tax: $90.00</span>
-                            </p>
-                        </div>
-                        <div class="button-group">
-                            <button type="button" onclick="cart.add('42');"><i class="fa fa-shopping-cart"></i> <span
-                                        class="hidden-xs hidden-sm hidden-md">Add to Cart</span></button>
-                            <button type="button" data-toggle="tooltip" title="Add to Wish List"
-                                    onclick="wishlist.add('42');"><i class="fa fa-heart"></i></button>
-                            <button type="button" data-toggle="tooltip" title="Compare this Product"
-                                    onclick="compare.add('42');"><i class="fa fa-exchange"></i></button>
-                        </div>
-                    </div>
-                </div>
-                <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                    <div class="product-thumb transition">
-                        <div class="image"><a
-                                    href="/index.php?route=product/product&amp;product_id=30"><img
-                                        src="http://static.shop.local/cache/products/canon_eos_5d_1-200x200.jpg"
-                                        alt="Canon EOS 5D" title="Canon EOS 5D" class="img-responsive"/></a></div>
-                        <div class="caption">
-                            <h4><a href="/index.php?route=product/product&amp;product_id=30">Canon
-                                    EOS 5D</a></h4>
-                            <p>
-                                Canon's press material for the EOS 5D states that it 'defines (a) new D-SLR category',
-                                while we'r..</p>
-                            <p class="price">
-                                <span class="price-new">$98.00</span> <span class="price-old">$122.00</span>
-                                <span class="price-tax">Ex Tax: $80.00</span>
-                            </p>
-                        </div>
-                        <div class="button-group">
-                            <button type="button" onclick="cart.add('30');"><i class="fa fa-shopping-cart"></i> <span
-                                        class="hidden-xs hidden-sm hidden-md">Add to Cart</span></button>
-                            <button type="button" data-toggle="tooltip" title="Add to Wish List"
-                                    onclick="wishlist.add('30');"><i class="fa fa-heart"></i></button>
-                            <button type="button" data-toggle="tooltip" title="Compare this Product"
-                                    onclick="compare.add('30');"><i class="fa fa-exchange"></i></button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div id="carousel0" class="owl-carousel">
-                <div class="item text-center">
-                    <img src="http://static.shop.local/cache/manufacturers/nfl-130x100.png" alt="NFL"
-                         class="img-responsive"/>
-                </div>
-                <div class="item text-center">
-                    <img src="http://static.shop.local/cache/manufacturers/redbull-130x100.png"
-                         alt="RedBull" class="img-responsive"/>
-                </div>
-                <div class="item text-center">
-                    <img src="http://static.shop.local/cache/manufacturers/sony-130x100.png" alt="Sony"
-                         class="img-responsive"/>
-                </div>
-                <div class="item text-center">
-                    <img src="http://static.shop.local/cache/manufacturers/cocacola-130x100.png"
-                         alt="Coca Cola" class="img-responsive"/>
-                </div>
-                <div class="item text-center">
-                    <img src="http://static.shop.local/cache/manufacturers/burgerking-130x100.png"
-                         alt="Burger King" class="img-responsive"/>
-                </div>
-                <div class="item text-center">
-                    <img src="http://static.shop.local/cache/manufacturers/canon-130x100.png" alt="Canon"
-                         class="img-responsive"/>
-                </div>
-                <div class="item text-center">
-                    <img src="http://static.shop.local/cache/manufacturers/harley-130x100.png"
-                         alt="Harley Davidson" class="img-responsive"/>
-                </div>
-                <div class="item text-center">
-                    <img src="http://static.shop.local/cache/manufacturers/dell-130x100.png" alt="Dell"
-                         class="img-responsive"/>
-                </div>
-                <div class="item text-center">
-                    <img src="http://static.shop.local/cache/manufacturers/disney-130x100.png"
-                         alt="Disney" class="img-responsive"/>
-                </div>
-                <div class="item text-center">
-                    <img src="http://static.shop.local/cache/manufacturers/starbucks-130x100.png"
-                         alt="Starbucks" class="img-responsive"/>
-                </div>
-                <div class="item text-center">
-                    <img src="http://static.shop.local/cache/manufacturers/nintendo-130x100.png"
-                         alt="Nintendo" class="img-responsive"/>
-                </div>
-            </div>
-            <script type="text/javascript"><!--
-                $('#carousel0').owlCarousel({
-                    items: 6,
-                    autoPlay: 3000,
-                    navigation: true,
-                    navigationText: ['<i class="fa fa-chevron-left fa-5x"></i>', '<i class="fa fa-chevron-right fa-5x"></i>'],
-                    pagination: true
-                });
-                --></script>
-        </div>
-    </div>
+    <?= Breadcrumbs::widget([
+        'links' => isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
+    ]) ?>
+    <?= Alert::widget() ?>
+    <?= $content ?>
 </div>
 <footer>
     <div class="container">
@@ -540,10 +355,8 @@ use yii\helpers\Url;
         <p>Powered By <a href="http://www.opencart.com">OpenCart</a><br/> Your Store &copy; 2017</p>
     </div>
 </footer>
-<!--
-OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
-Please donate via PayPal to donate@opencart.com
-//-->
-<!-- Theme created by Welford Media for OpenCart 2.0 www.welfordmedia.co.uk -->
+
+<?php $this->endBody() ?>
 </body>
 </html>
+<?php $this->endPage() ?>

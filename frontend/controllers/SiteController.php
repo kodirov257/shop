@@ -16,33 +16,8 @@ use shop\forms\auth\ResetPasswordForm;
 use shop\forms\auth\SignupForm;
 use shop\forms\ContactForm;
 
-/**
- * Site controller
- */
 class SiteController extends Controller
 {
-    private $authService;
-    private $signupService;
-    private $passwordResetService;
-    private $contactService;
-
-    public function __construct($id, $module,
-                                AuthService $authService,
-                                SignupService $signupService,
-                                PasswordResetService $passwordResetService,
-                                ContactService $contactService,
-                                $config = [])
-    {
-        $this->authService = $authService;
-        $this->signupService = $signupService;
-        $this->passwordResetService = $passwordResetService;
-        $this->contactService = $contactService;
-        parent::__construct($id, $module, $config);
-    }
-
-    /**
-     * {@inheritdoc}
-     */
     public function behaviors()
     {
         return [
@@ -88,18 +63,15 @@ class SiteController extends Controller
     }
 
     /**
-     * Displays homepage.
-     *
      * @return mixed
      */
     public function actionIndex()
     {
+        $this->layout = 'home';
         return $this->render('index');
     }
 
     /**
-     * Displays about page.
-     *
      * @return mixed
      */
     public function actionAbout()
