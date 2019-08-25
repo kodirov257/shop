@@ -1,3 +1,8 @@
+<?php
+
+use yii\helpers\Url;
+
+?>
 <!DOCTYPE html>
 <!--[if IE]><![endif]-->
 <!--[if IE 8 ]><html dir="ltr" lang="en" class="ie8"><![endif]-->
@@ -86,8 +91,8 @@
         <div class="row">
             <div class="col-sm-4">
                 <div id="logo">
-                    <a href="/index.php?route=common/home"><img
-                                src="/image/catalog/logo.png" title="Your Store" alt="Your Store"
+                    <a href="<?= Url::home() ?>"><img
+                                src="<?= Yii::getAlias('@web/image/logo.png') ?>" title="Your Store" alt="Your Store"
                                 class="img-responsive"/></a>
                 </div>
             </div>
